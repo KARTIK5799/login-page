@@ -1,27 +1,31 @@
-import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import { ToastContainer } from 'react-toastify'; 
+import HomePage from './pages/HomePage'; 
+import { useEffect, useState } from 'react';
 
-function App() {
-  const isAuthenticated = !!localStorage.getItem('authToken');
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   return (
     <Router>
       <Routes>
         <Route path="/auth/login" element={<LoginPage />} />
+
         <Route
           path="/home"
-          element={isAuthenticated ? <HomePage /> : <Navigate to="/auth/login" />}
+          element={isLoggedIn ? <HomePage /> : <Navigate to="/auth/login" replace />}
         />
-        <Route path="*" element={<Navigate to="/auth/login" />} />
+        
+   
+        <Route path="*" element={<Navigate to="/auth/login" replace />} />
       </Routes>
-
-  
-      <ToastContainer />
     </Router>
   );
-}
+};
 
 export default App;

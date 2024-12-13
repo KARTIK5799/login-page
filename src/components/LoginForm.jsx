@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import InputBox from './InputBox';
 import style from './LoginForm.module.css';
 import googleIcon from '../assets/google.png';
@@ -13,13 +14,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     if (localStorage.getItem('authToken')) {
       setIsLoggedIn(true);
-      window.location.href = '/home'; 
+      navigate('/home'); 
     }
-  }, []);
+  }, [navigate]);
 
   const validateForm = () => {
     const newErrors = {};
@@ -42,19 +44,17 @@ const LoginForm = () => {
     e.preventDefault();
 
     if (validateForm()) {
-
       localStorage.setItem('authToken', 'dummy-token'); 
       localStorage.setItem('userData', JSON.stringify({ username, email, password })); // Add password here
-  
+
       toast.success(`Successfully logged in as ${username}`);
-    
+
       setIsLoggedIn(true);
-      window.location.href = '/home'; 
+      navigate('/home'); 
     } else {
       toast.error('Please fill all fields correctly.');
     }
   };
-  
 
   return (
     <div className={style.loginForm}>
