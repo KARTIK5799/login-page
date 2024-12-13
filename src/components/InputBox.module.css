@@ -1,0 +1,70 @@
+.inputDiv {
+    width: 100%;
+    background: #f4f4f4;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.6rem;
+
+    gap: 1rem;
+    border: 1px solid #ddd;
+  }
+  
+  .inputDiv:hover {
+    border: 1px solid #007bff;
+  }
+  .errormsg{
+    color: red;
+    font-size: 10px;
+  }
+  
+  .inputIcon img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .inputDetails {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputLabel {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+  }
+  
+  .inputBox {
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #333;
+    width: 100%;
+  }
+  
+  .inputBox:focus {
+    outline: none;
+  }
+  
+  .visibilityIcon {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .inputDiv {
+      padding: 0.6rem 0.8rem;
+    }
+  
+    .inputIcon img {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  
+    .inputBox {
+      font-size: 0.8rem;
+    }
+  }
+  
