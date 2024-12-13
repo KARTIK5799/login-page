@@ -1,6 +1,6 @@
 import LoginForm from '../components/LoginForm';
 import style from './LoginPage.module.css';
-import leftImg from '../../public/assets/illustration.png';
+import leftImg from '../assets/illustration.png'
 
 const LoginPage = () => {
   return (
